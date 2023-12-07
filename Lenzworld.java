@@ -1,20 +1,19 @@
 import java.util.HashMap;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Lenzworld {
 
     static HashMap<Integer, Organism> ecosystem = new HashMap<Integer, Organism>();
-    static ArrayList<ArrayList<Integer>> distances;      // distances between organisms
+    static int[][] distances;      // distances between organisms
     static int n = 0;      // number of organisms
 
     public static void main(String[] args) {
 
-        distances = new ArrayList<ArrayList<Integer>>();
+        distances = new int[10][10];
 
         insertOrganism(new Fox(n));
         insertOrganism(new Rabbit(n));
-        insertOrganism(new Plant(n));
+        //insertOrganism(new Plant(n));
 
         Gui.initGui();
 
@@ -49,11 +48,8 @@ public class Lenzworld {
         
         int key = n;
 
-        ArrayList<Integer> dist = new ArrayList<Integer>();
-        dist.ensureCapacity((n + 1) * 2);
-        distances.add(key, dist);
-
         ecosystem.put(key, organism);
+
         updateRelativeDistances(key);
         if (n > 0) {
             distancesCapacityCheck();
@@ -65,11 +61,12 @@ public class Lenzworld {
     // Takes the array with all organisms and calculates the distance of the indexed organism from all other.
     public static void updateRelativeDistances(int key) {
 
-        for(int i = 0; i <= n; i ++) {
+        for(int i = 0; i < n; i ++) {
 
             double distance = calculateDistance(key, i);
-            distances.get(key).add(i, Math.round((float)distance));
-            distances.get(i).add(key, Math.round((float)distance));
+
+            distances[key][i] = Math.round((float)distance);
+            distances[i][key] = Math.round((float)distance);
         }
     }
 
@@ -93,13 +90,13 @@ public class Lenzworld {
 
     public static void distancesCapacityCheck() {
         
-        double capacityRatio = (double) n / distances.size();
+        double capacityRatio = (double) n / distances.length;
         if (capacityRatio >= 0.75) {
 
             for (int i = 0; i <= n; i ++) {
-                distances.get(i).ensureCapacity(n * 2); 
+                //distances[i].ensureCapacity((n + 1) * 5); 
             }
-            distances.ensureCapacity(n * 2);
+            //distances.ensureCapacity((n + 1) * 5);
         }
     }
     // sorts the surroundings linked list of organism from closest to furthes surrounding organsim.
@@ -135,7 +132,7 @@ public class Lenzworld {
             System.out.println();
             System.out.println("    distances:");
             for (int j = 0; j < n; j++) {
-                System.out.println("        " + j + ": " + distances.get(i).get(j));
+                System.out.println("        " + j + ": " + distances[i][j]);
             }
         }
         System.out.println();

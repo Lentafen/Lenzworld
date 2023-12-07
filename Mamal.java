@@ -78,10 +78,10 @@ public class Mamal extends Organism {
 
         LinkedList<int[]> surroundings = new LinkedList<int[]>();
         for (int i = 0; i < Lenzworld.n; i++) {
-            if (Lenzworld.distances.get(key).get(i) <= sensoryRange && key != i) {
+            if (Lenzworld.distances[key][i] <= sensoryRange && key != i) {
                 int[] surrounding = new int[2];
                 surrounding[0] = i;
-                surrounding[1] = Lenzworld.distances.get(key).get(i);
+                surrounding[1] = Lenzworld.distances[key][i];
 
                 surroundings.add(surrounding);
             }

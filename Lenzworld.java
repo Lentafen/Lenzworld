@@ -11,9 +11,13 @@ public class Lenzworld {
 
         distances = new int[10][10];
 
-        insertOrganism(new Fox(n));
-        insertOrganism(new Rabbit(n));
-        //insertOrganism(new Plant(n));
+        insertOrganism(new Fox(500, 500, n));
+        insertOrganism(new Rabbit(400, 400, n));
+        insertOrganism(new Plant(n));
+
+        for (int i =0; i < n; i++){
+            updateRelativeDistances(i);
+        }
 
         Gui.initGui();
 
@@ -24,8 +28,7 @@ public class Lenzworld {
             double loopStart = System.currentTimeMillis();
 
             for(int i = 0; i < n; i++) {
-                
-                updateRelativeDistances(i);
+
                 Organism currentOrganism = ecosystem.get(i);
 
                 if (currentOrganism instanceof Fox) {

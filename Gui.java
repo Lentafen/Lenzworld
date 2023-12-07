@@ -38,7 +38,6 @@ public class Gui {
         }
 
         StdDraw.filledCircle(organism.position[0], organism.position[1], 5);
-
     }
 
     // Earases an organism from the canvas.
@@ -49,7 +48,7 @@ public class Gui {
 
     }
 
-    // animates the movents of the organism by erasing its prviouse self and re drawing in new position.
+    // Animates the movents of the organism by erasing its prviouse self and re drawing in new position.
     public static void animateMovement(Organism organism, boolean updateVelocity) {
 
         Gui.earaseOrganism(organism);

@@ -73,13 +73,10 @@ public class Rabbit extends Mamal{
                 foxRrabbit[0] = foxPosition[0] - rabbitPosition[0] ;
                 foxRrabbit[1] = foxPosition[1] - rabbitPosition[1];
 
-                velocity[0] = -maxVelocity * (foxRrabbit[0] / Math.abs(foxRrabbit[0]));
-                velocity[1] = -maxVelocity * (foxRrabbit[1] / Math.abs(foxRrabbit[1]));
+                velocity[0] = -1 * maxVelocity * (foxRrabbit[0] / Lenzworld.distances[key][surroundingKey]);
+                velocity[1] = -1 * maxVelocity * (foxRrabbit[1] / Lenzworld.distances[key][surroundingKey]);
 
-                Gui.earaseOrganism(Lenzworld.ecosystem.get(key));
-                updatePosition();
-                Gui.drawOrganism(Lenzworld.ecosystem.get(key));
-
+                Gui.animateMovement(Lenzworld.ecosystem.get(key), false);
 
                 break;
 

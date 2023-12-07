@@ -68,11 +68,10 @@ public class Fox extends Mamal{
                 rabbitRfox[0] = rabbitPosition[0] - foxPosition[0];
                 rabbitRfox[1] = rabbitPosition[1] - foxPosition[1];
 
-                velocity[0] = maxVelocity * (rabbitRfox[0] / Math.abs(rabbitRfox[0]));
-                System.out.println("fox new vel: " + velocity[0]);
-                velocity[1] = maxVelocity * (rabbitRfox[1] / Math.abs(rabbitRfox[1]));
+                velocity[0] = maxVelocity * (rabbitRfox[0] / Lenzworld.distances[key][surroundingKey]);
+                velocity[1] = maxVelocity * (rabbitRfox[1] / Lenzworld.distances[key][surroundingKey]);
 
-                Gui.animateMovement(Lenzworld.ecosystem.get(key), true);
+                Gui.animateMovement(Lenzworld.ecosystem.get(key), false);
 
                 break;
             }

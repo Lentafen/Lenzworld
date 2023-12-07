@@ -12,7 +12,7 @@ public class Mamal extends Organism {
     public int hunger;
     public int thirst;
 
-    public int sensoryRange = 50;
+    public int sensoryRange = 130;
 
     // Surval responses of surroundings in decending priority.
     public boolean[] survivalResponse;
@@ -57,9 +57,7 @@ public class Mamal extends Organism {
     // Updates positions based on velocity.
     public void updatePosition() {
 
-        System.out.println(velocity[0]);
         position[0] = position[0] + velocity[0];
-        System.out.println(position[0]);
         position[1] = position[1] + velocity[1];
 
         if (position[0] <= 0 || position[0] >= 1000) {
@@ -71,6 +69,8 @@ public class Mamal extends Organism {
             velocity[1] = velocity[1] * -1;
             acceleration[1] = acceleration[1] * -1;
         }
+
+        Lenzworld.updateRelativeDistances(key);
     }
 
     // Checks what organisms are in sensory range from the distances arraylist. returns arraylist of in-range surroundings.

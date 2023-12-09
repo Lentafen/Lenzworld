@@ -11,9 +11,12 @@ public class Lenzworld {
 
         distances = new int[10][10];
 
-        insertOrganism(new Fox(500, 500, n));
-        insertOrganism(new Rabbit(400, 400, n));
-        insertOrganism(new Plant(n));
+        insertOrganism(new Fox(900, 500, n));
+        insertOrganism(new Fox(500, 700, n));
+        insertOrganism(new Fox(350, 500, n));
+        insertOrganism(new Rabbit(100, 600, n));
+        insertOrganism(new Rabbit(800, 200, n));
+        insertOrganism(new Rabbit(400, 200, n));
 
         for (int i =0; i < n; i++){
             updateRelativeDistances(i);

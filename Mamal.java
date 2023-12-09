@@ -60,12 +60,12 @@ public class Mamal extends Organism {
         position[0] = position[0] + velocity[0];
         position[1] = position[1] + velocity[1];
 
-        if (position[0] <= 0 || position[0] >= 1000) {
+        if (position[0] <= 10 || position[0] >= 990) {
             velocity[0] = velocity[0] * -1;
             acceleration[0] = acceleration[0] * -1;
         }
 
-        if (position[1] <= 0 || position[1] >= 1000) {
+        if (position[1] <= 10 || position[1] >= 990) {
             velocity[1] = velocity[1] * -1;
             acceleration[1] = acceleration[1] * -1;
         }
